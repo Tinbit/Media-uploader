@@ -1,0 +1,27 @@
+# dependencies
+node_modules/
+client/node_modules/
+server/node_modules/
+.vscode/
+.idea/
+
+# builds
+client/dist/
+server/dist/
+client/public/
+
+# env & data
+server/.env
+server/uploads/*
+!server/uploads/.gitkeep
+*.env
+
+# misc
+npm-debug.log*
+.DS_Store
+
+# Test artifacts
+coverage/
+client/.vite/
+jest-cache/
+*.tsbuildinfo

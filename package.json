@@ -1,0 +1,18 @@
+{
+  "name": "media-uploader-monorepo",
+  "private": true,
+  "workspaces": [
+    "server",
+    "client"
+  ],
+  "scripts": {
+    "build": "npm --workspace server run build && npm --workspace client run build",
+    "dev": "concurrently -n server,client -c green,cyan \"npm --workspace server run dev\" \"npm --workspace client run dev\"",
+    "test": "npm --workspace server test && npm --workspace client test",
+    "test:watch": "concurrently -n jest,vitest -c magenta,blue \"npm --workspace server run test:watch\" \"npm --workspace client run test:watch\"",
+    "start": "npm --workspace server start"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1"
+  }
+}
