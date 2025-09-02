@@ -28,10 +28,29 @@ Built with TypeScript, Express, Vite, and MUI. Storage is local now, but the des
 ```bash
 npm install
 ```
-### Development (watch: client + server)
+### Set environment
+Create server/.env
+```bash
+PORT=4000
+UPLOAD_DIR=uploads
+CLIENT_ORIGIN=http://localhost:5173
+MAX_IMAGE_SIZE_MB=10
+MAX_VIDEO_SIZE_MB=200
+ALLOWED_IMAGE_TYPES=image/jpeg,image/png,image/gif,image/webp,image/heic
+ALLOWED_VIDEO_TYPES=video/mp4,video/webm,video/quicktime
+RATE_LIMIT_WINDOW_MIN=15
+RATE_LIMIT_MAX=100
+SERVE_CLIENT=true
+API_PAGE_SIZE_DEFAULT=24
+API_PAGE_SIZE_MAX=60
+```
+### Run in development (watch: client + server)
 ```bash
   npm run dev
 ```
+Client: http://localhost:5173
+API: http://localhost:4000
+
 ### Production build & run
 ```bash
 npm -w client run build
@@ -40,7 +59,7 @@ npm -w server run build
 # start server (serves API; if SERVE_CLIENT=true in server/.env, it also serves client/dist)
 npm start
 ```
-Create server/.env before running (see the Configuration section if included).
+Create server/.env before running (see Set environment configuration section as an example value).
 
 ## Tests
 - **Server**: `npm -w server test`
