@@ -1,0 +1,18 @@
+.git
+.gitignore
+node_modules
+client/node_modules
+server/node_modules
+
+# Local builds & caches
+client/dist
+server/dist
+client/.vite
+*.tsbuildinfo
+
+client/src/tests
+server/src/tests
+coverage/
+.vitest/
+server/uploads
+server/.env
