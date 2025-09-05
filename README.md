@@ -1,7 +1,7 @@
 # Media Uploader (Node + React)
 
-A polished Node + React media uploader with drag & drop, live progress, rename/delete, a paginated gallery, and video streaming.  
-Built with TypeScript, Express, Vite, and MUI. Storage is local now, but the design makes it easy to swap to S3/CDN later.
+A polished **Node.js + React** media uploader: drag & drop with live progress, type filters, rename/delete, a paginated gallery, and video streaming. **Dockerized** for one-command local runs, with **GitHub Actions CI** running tests and builds on every branch/PR. Built end-to-end in **TypeScript** (Node.js/Express API + React/Vite/MUI), using local disk storage now, but the design makes it easy to swap to **S3/CDN** later.
+
 
 ## What’s included
 - **Node Express + TypeScript backend**
@@ -9,6 +9,9 @@ Built with TypeScript, Express, Vite, and MUI. Storage is local now, but the des
 - **Upload progress UI**, drag & drop, and previews (images & videos)
 - **File validation** (type/size), **Unicode filenames** (Cyrillic/Chinese/etc.), security headers & basic write-rate limiting
 - **Tests** — Server: **Jest + Supertest**; Client: **Vitest + React Testing Library**
+- **Dockerized** Build and run with Docker Desktop
+- **Continuous Integration (GitHub Actions)**, The repo runs CI on every branch and on pull requests
+   ![CI](https://github.com/Tinbit/Media-uploader/actions/workflows/ci.yml/badge.svg)
 
 ### In addition
 - **Filter by type:** All / Images / Videos
@@ -65,5 +68,16 @@ Create server/.env before running (see Set environment configuration section as 
 - **Server**: `npm -w server test`
 - **Client**: `npm -w client test`
 
+---
+
+## Run with Docker (local)
+
+Build and run with Docker Desktop:
+
+```bash
+docker compose build
+docker compose up
+```
+
 ## Scope adjustment note
-“This could’ve been made better by ensuring resumable uploads, cloud object storage with signed URLs, content moderation/AV scanning, and a proper DB with migrations. It would take a few days more to implement and at this point I don’t see the value for the demo scope — but I’d plan those next for a production rollout.”
+"This could’ve been made better by ensuring resumable uploads, cloud object storage with signed URLs, content moderation/AV scanning, and a proper DB with migrations. It would take a few days more to implement and at this point I don’t see the value for the demo scope — but I’d plan those next for a production rollout."

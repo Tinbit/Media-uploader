@@ -1,0 +1,60 @@
+name: CI
+
+on:
+  push:
+    branches: ["**"]
+    paths-ignore:
+      - "**/*.md"
+      - "**/.gitignore"
+      - "LICENSE"
+  pull_request:
+    branches: ["**"]    
+  workflow_dispatch:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test-and-build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    permissions:
+      contents: read
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - name: Install dependencies (workspaces)
+        run: npm ci
+
+      # ---- Tests ----
+      - name: Server tests (Jest + supertest)
+        run: npm -w server test --silent
+
+      - name: Client tests (Vitest + RTL)
+        run: npm -w client test --silent -- --run
+
+      # ---- Builds ----
+      - name: Build client (Vite)
+        run: npm -w client run build
+
+      - name: Build server (TypeScript)
+        run: npm -w server run build
+
+      # ---- Artifacts ----
+      - name: Upload dist artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: dist-bundles
+          if-no-files-found: warn
+          path: |
+            client/dist
+            server/dist

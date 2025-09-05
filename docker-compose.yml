@@ -1,0 +1,18 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "4000:4000"
+    env_file:
+      - server/.env
+    environment:
+      SERVE_CLIENT: "true"
+      CLIENT_ORIGIN: "http://localhost:4000"
+    volumes:
+      - uploads_data:/app/server/uploads
+    restart: unless-stopped
+
+volumes:
+  uploads_data:
