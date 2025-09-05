@@ -77,8 +77,7 @@ Build and run with Docker Desktop:
 ```bash
 docker compose build
 docker compose up
-# http://localhost:4000
-
+```
 
 ## Scope adjustment note
-“This could’ve been made better by ensuring resumable uploads, cloud object storage with signed URLs, content moderation/AV scanning, and a proper DB with migrations. It would take a few days more to implement and at this point I don’t see the value for the demo scope — but I’d plan those next for a production rollout.”
+"This could’ve been made better by ensuring resumable uploads, cloud object storage with signed URLs, content moderation/AV scanning, and a proper DB with migrations. It would take a few days more to implement and at this point I don’t see the value for the demo scope — but I’d plan those next for a production rollout."
